@@ -1,0 +1,16 @@
+{
+  "artifact_kinds": [
+    "ccm_convergence_diagnostics",
+    "ccm_cross_check_record",
+    "ccm_validation_record",
+    "ccm_certificate_bundle"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-evidence-0001",
+  "description": "CCM diagnostics, cross-checks, validation records, and certificates.",
+  "display_name": "CCM evidence",
+  "family": "ccm-evidence",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-ccm-evidence-0001.json"
+  ]
+}

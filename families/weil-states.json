@@ -1,0 +1,16 @@
+{
+  "artifact_kinds": [
+    "ccm_weil_eigenpair",
+    "ccm_weil_plunge_state",
+    "ccm_weil_sonin_state",
+    "ccm_source_eigenbasis"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-weil-states-0001",
+  "description": "Weil eigenpairs, plunge states, Sonin states, and source eigenbases.",
+  "display_name": "Weil states",
+  "family": "weil-states",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-weil-states-0001.json"
+  ]
+}

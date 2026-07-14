@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_kinds": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "family": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "shards": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "family",
+    "artifact_kinds",
+    "shards"
+  ],
+  "title": "Xcelerator cache family registry entry",
+  "type": "object"
+}

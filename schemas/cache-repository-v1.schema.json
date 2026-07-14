@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifact_kinds": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "family": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "shard": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "repository",
+    "family",
+    "artifact_kinds",
+    "shard"
+  ],
+  "title": "Xcelerator cache repository",
+  "type": "object"
+}

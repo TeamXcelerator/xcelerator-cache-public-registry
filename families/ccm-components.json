@@ -1,0 +1,16 @@
+{
+  "artifact_kinds": [
+    "ccm_prime_enumeration",
+    "ccm_archimedean_component",
+    "ccm_prime_component",
+    "ccm_pole_component"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-components-0001",
+  "description": "Reusable prime, archimedean, and pole components for CCM computations.",
+  "display_name": "CCM components",
+  "family": "ccm-components",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-ccm-components-0001.json"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "artifact_kinds": [
+    "ccm_tau_matrix",
+    "ccm_even_sector_matrix",
+    "ccm_odd_sector_matrix",
+    "ccm_reduced_operator",
+    "ccm_factorization"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-matrices-0001",
+  "description": "CCM matrices, reduced operators, and reusable factorizations.",
+  "display_name": "CCM matrices",
+  "family": "ccm-matrices",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-ccm-matrices-0001.json"
+  ]
+}

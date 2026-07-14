@@ -1,0 +1,16 @@
+{
+  "artifact_kinds": [
+    "ccm_prolate_spectrum",
+    "ccm_prolate_basis",
+    "ccm_prolate_candidate",
+    "ccm_band_concentration"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-prolate-0001",
+  "description": "Prolate spectra, bases, concentration data, and transfer candidates.",
+  "display_name": "Prolate",
+  "family": "prolate",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-prolate-0001.json"
+  ]
+}

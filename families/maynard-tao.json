@@ -1,0 +1,18 @@
+{
+  "artifact_kinds": [
+    "maynard_basis",
+    "maynard_moment_table",
+    "maynard_operator",
+    "maynard_candidate",
+    "maynard_bound",
+    "maynard_certificate"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-maynard-tao-0001",
+  "description": "Maynard-Tao bases, moments, operators, candidates, bounds, and certificates.",
+  "display_name": "Maynard-Tao",
+  "family": "maynard-tao",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-maynard-tao-0001.json"
+  ]
+}

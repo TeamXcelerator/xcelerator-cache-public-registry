@@ -1,0 +1,47 @@
+{
+  "default_branch": "main",
+  "families": [
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-quadrature-0001",
+      "family": "quadrature",
+      "metadata": "families/quadrature.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-components-0001",
+      "family": "ccm-components",
+      "metadata": "families/ccm-components.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-matrices-0001",
+      "family": "ccm-matrices",
+      "metadata": "families/ccm-matrices.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-weil-states-0001",
+      "family": "weil-states",
+      "metadata": "families/weil-states.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-prolate-0001",
+      "family": "prolate",
+      "metadata": "families/prolate.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-roots-0001",
+      "family": "ccm-roots",
+      "metadata": "families/ccm-roots.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-evidence-0001",
+      "family": "ccm-evidence",
+      "metadata": "families/ccm-evidence.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-maynard-tao-0001",
+      "family": "maynard-tao",
+      "metadata": "families/maynard-tao.json"
+    }
+  ],
+  "repository": "TeamXcelerator/xcelerator-cache-public-registry",
+  "schema_version": 1
+}

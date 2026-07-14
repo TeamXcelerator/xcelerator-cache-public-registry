@@ -1,0 +1,13 @@
+{
+  "capacity_policy": {
+    "maximum_reachable_payload_bytes": 100000000000,
+    "rollover_repository_pattern": "xcelerator-cache-public-ccm-evidence-{shard:04d}"
+  },
+  "default_branch": "main",
+  "family": "ccm-evidence",
+  "immutable_objects": true,
+  "repository": "TeamXcelerator/xcelerator-cache-public-ccm-evidence-0001",
+  "schema_version": 1,
+  "shard": 1,
+  "writable": true
+}

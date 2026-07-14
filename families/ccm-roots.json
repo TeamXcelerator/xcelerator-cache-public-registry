@@ -1,0 +1,16 @@
+{
+  "artifact_kinds": [
+    "ccm_secular_source",
+    "ccm_root_discovery_window",
+    "ccm_root_refinement",
+    "ccm_spectral_window"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-roots-0001",
+  "description": "CCM secular sources, discovery windows, refinements, and spectral windows.",
+  "display_name": "CCM roots",
+  "family": "ccm-roots",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-ccm-roots-0001.json"
+  ]
+}

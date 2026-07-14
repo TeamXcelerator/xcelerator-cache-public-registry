@@ -1,0 +1,15 @@
+{
+  "artifact_kinds": [
+    "gauss_legendre_rule",
+    "quadrature_reference_table",
+    "quadrature_validation"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-quadrature-0001",
+  "description": "Gauss-Legendre rules and quadrature validation data.",
+  "display_name": "Quadrature",
+  "family": "quadrature",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-quadrature-0001.json"
+  ]
+}
