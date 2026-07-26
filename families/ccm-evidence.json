@@ -1,6 +1,8 @@
 {
   "artifact_kinds": [
     "ccm_convergence_diagnostics",
+    "ccm_sector_gap",
+    "ccm_post_discovery_comparison",
     "ccm_cross_check_record",
     "ccm_validation_record",
     "ccm_certificate_bundle"

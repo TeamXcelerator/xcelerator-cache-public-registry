@@ -1,5 +1,6 @@
 {
   "artifact_kinds": [
+    "prolate_eigenvalue_spectrum",
     "ccm_prolate_spectrum",
     "ccm_prolate_basis",
     "ccm_prolate_candidate",

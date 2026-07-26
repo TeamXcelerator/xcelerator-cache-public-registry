@@ -1,6 +1,7 @@
 {
   "artifact_kinds": [
     "ccm_secular_source",
+    "ccm_root_count_window",
     "ccm_root_discovery_window",
     "ccm_root_refinement",
     "ccm_spectral_window"

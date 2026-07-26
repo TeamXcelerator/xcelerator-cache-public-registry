@@ -1,6 +1,8 @@
 {
   "artifact_kinds": [
     "ccm_weil_eigenpair",
+    "ccm_sector_eigenvalues",
+    "ccm_sector_spectrum",
     "ccm_weil_plunge_state",
     "ccm_weil_sonin_state",
     "ccm_source_eigenbasis"

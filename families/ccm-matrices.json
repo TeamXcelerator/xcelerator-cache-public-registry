@@ -3,6 +3,8 @@
     "ccm_tau_matrix",
     "ccm_even_sector_matrix",
     "ccm_odd_sector_matrix",
+    "ccm_sector_tridiagonal",
+    "ccm_sector_transform",
     "ccm_reduced_operator",
     "ccm_factorization"
   ],

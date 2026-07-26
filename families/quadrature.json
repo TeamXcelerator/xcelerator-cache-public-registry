@@ -1,6 +1,7 @@
 {
   "artifact_kinds": [
     "gauss_legendre_rule",
+    "quadrature_rule",
     "quadrature_reference_table",
     "quadrature_validation"
   ],

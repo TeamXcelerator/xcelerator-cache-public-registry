@@ -1,6 +1,7 @@
 {
   "artifact_kinds": [
     "ccm_prime_enumeration",
+    "ccm_archimedean_integrals",
     "ccm_archimedean_component",
     "ccm_prime_component",
     "ccm_pole_component"
