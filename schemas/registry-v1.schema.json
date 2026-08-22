@@ -10,11 +10,18 @@
     },
     "schema_version": {
       "const": 1
+    },
+    "visibility": {
+      "enum": [
+        "private",
+        "public"
+      ]
     }
   },
   "required": [
     "schema_version",
     "repository",
+    "visibility",
     "families"
   ],
   "title": "Xcelerator cache registry",

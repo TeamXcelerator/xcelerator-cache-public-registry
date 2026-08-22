@@ -9,5 +9,6 @@
   "repository": "TeamXcelerator/xcelerator-cache-public-weil-states-0001",
   "schema_version": 1,
   "shard": 1,
+  "visibility": "public",
   "writable": true
 }

@@ -20,6 +20,12 @@
     "shard": {
       "minimum": 1,
       "type": "integer"
+    },
+    "visibility": {
+      "enum": [
+        "private",
+        "public"
+      ]
     }
   },
   "required": [
@@ -27,6 +33,7 @@
     "repository",
     "family",
     "artifact_kinds",
+    "visibility",
     "shard"
   ],
   "title": "Xcelerator cache repository",

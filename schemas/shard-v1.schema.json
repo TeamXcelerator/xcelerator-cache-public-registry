@@ -14,12 +14,19 @@
     "shard": {
       "minimum": 1,
       "type": "integer"
+    },
+    "visibility": {
+      "enum": [
+        "private",
+        "public"
+      ]
     }
   },
   "required": [
     "schema_version",
     "repository",
     "family",
+    "visibility",
     "shard"
   ],
   "title": "Xcelerator cache shard registry entry",

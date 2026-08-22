@@ -14,5 +14,6 @@
   "schema_version": 1,
   "shards": [
     "shards/xcelerator-cache-public-ccm-evidence-0001.json"
-  ]
+  ],
+  "visibility": "public"
 }

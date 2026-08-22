@@ -13,5 +13,6 @@
   "schema_version": 1,
   "shards": [
     "shards/xcelerator-cache-public-ccm-roots-0001.json"
-  ]
+  ],
+  "visibility": "public"
 }
