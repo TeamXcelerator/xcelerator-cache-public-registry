@@ -1,5 +1,6 @@
 {
   "artifact_kinds": [
+    "ccm_discretization_distance",
     "ccm_eigenfunction_profile",
     "ccm_target_distance"
   ],
