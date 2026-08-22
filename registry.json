@@ -40,6 +40,11 @@
       "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-maynard-tao-0001",
       "family": "maynard-tao",
       "metadata": "families/maynard-tao.json"
+    },
+    {
+      "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-distance-0001",
+      "family": "ccm-distance",
+      "metadata": "families/ccm-distance.json"
     }
   ],
   "repository": "TeamXcelerator/xcelerator-cache-public-registry",
