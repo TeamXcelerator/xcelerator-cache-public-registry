@@ -26,6 +26,12 @@ snapshots/<registry-digest>.json
 Registry updates are published after the referenced payload objects and
 manifests are available in their destination repository.
 
+The family and writable-shard routing contracts are synchronized with
+Xcelerator Toolkit v0.14.1. Registration permits validated publication of an
+artifact kind; it does not assert that an artifact of that kind is present.
+Target-derived CCM artifact kinds are private-only and are not registered in
+this public registry.
+
 ## Trademarks
 
 "Team Xcelerator Inc." is a registered trademark of Team Xcelerator Inc.

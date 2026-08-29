@@ -1,7 +1,11 @@
 {
   "artifact_kinds": [
     "ccm_convergence_diagnostics",
+    "ccm_root_conditioning_analysis",
+    "ccm_prime_power_response_analysis",
+    "ccm_u_flow_response_analysis",
     "ccm_sector_gap",
+    "ccm_sector_gap_certificate",
     "ccm_post_discovery_comparison",
     "ccm_cross_check_record",
     "ccm_validation_record",
