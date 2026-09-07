@@ -1,5 +1,7 @@
 {
   "artifact_kinds": [
+    "ccm_prefix_analysis",
+    "ccm_retained_reduction_check",
     "ccm_convergence_diagnostics",
     "ccm_root_conditioning_analysis",
     "ccm_prime_power_response_analysis",

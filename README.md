@@ -35,3 +35,13 @@ this public registry.
 ## Trademarks
 
 "Team Xcelerator Inc." is a registered trademark of Team Xcelerator Inc.
+
+## Toolkit v0.15.0 evidence support
+
+The evidence family includes source-bound `ccm_prefix_analysis` and
+`ccm_retained_reduction_check` in both visibility lanes. Public diagnostic
+children require public parents and a public dependency closure. Target-derived
+measurements retain their private-only policy. The shared reduction payload
+schema is in `schemas/ccm-retained-reduction-check-v1.schema.json`; numerical
+identity and finite-scalar validation remain the toolkit reader's responsibility.
+Registration makes a type routable; it does not assert that any payload exists.
