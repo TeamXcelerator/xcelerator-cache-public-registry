@@ -45,3 +45,12 @@ measurements retain their private-only policy. The shared reduction payload
 schema is in `schemas/ccm-retained-reduction-check-v1.schema.json`; numerical
 identity and finite-scalar validation remain the toolkit reader's responsibility.
 Registration makes a type routable; it does not assert that any payload exists.
+
+## Research capture records
+
+Toolkit v0.15.0 supports `research_capture_receipt` and
+`research_hypothesis_evaluation`. These contain full plans, outcomes and
+selected observation bytes and are private-only. Both registries provide the
+shared shape schemas; only the private evidence catalog admits these kinds.
+Source-only prefix and retained-reduction diagnostics retain their existing
+public-source eligibility rules. Schema registration does not publish payloads.
