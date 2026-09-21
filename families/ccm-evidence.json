@@ -2,6 +2,7 @@
   "artifact_kinds": [
     "ccm_prefix_analysis",
     "ccm_retained_reduction_check",
+    "ccm_state_geometry_analysis",
     "ccm_convergence_diagnostics",
     "ccm_root_conditioning_analysis",
     "ccm_prime_power_response_analysis",
@@ -11,7 +12,12 @@
     "ccm_post_discovery_comparison",
     "ccm_cross_check_record",
     "ccm_validation_record",
-    "ccm_certificate_bundle"
+    "ccm_certificate_bundle",
+    "research_reference_dataset",
+    "ccm_indexed_transform_analysis",
+    "ccm_operator_energy_analysis",
+    "ccm_root_band_analysis",
+    "ccm_stabilization_analysis"
   ],
   "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-evidence-0001",
   "description": "CCM diagnostics, cross-checks, validation records, and certificates.",
