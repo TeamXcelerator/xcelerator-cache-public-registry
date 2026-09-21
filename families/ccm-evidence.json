@@ -17,7 +17,10 @@
     "ccm_indexed_transform_analysis",
     "ccm_operator_energy_analysis",
     "ccm_root_band_analysis",
-    "ccm_stabilization_analysis"
+    "ccm_stabilization_analysis",
+    "ccm_compactness_analysis",
+    "ccm_directional_response_analysis",
+    "ccm_resolution_budget_analysis"
   ],
   "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-evidence-0001",
   "description": "CCM diagnostics, cross-checks, validation records, and certificates.",

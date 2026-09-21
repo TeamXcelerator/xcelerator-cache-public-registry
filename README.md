@@ -70,3 +70,7 @@ research formats. Shared schemas are identical across registry lanes; admitted
 kinds respect each lane's publication policy. Existing payloads and indexes
 are unchanged. See the Toolkit's retained-research coverage and backfill guides
 for mathematical conventions, missing-input behavior and assurance limits.
+
+The v0.15.1 extension adds schemas for external numerical research sources and
+nine derived diagnostic groups. Family descriptors retain their appropriate
+admission rules. Existing objects, receipts, and target identities are unchanged.

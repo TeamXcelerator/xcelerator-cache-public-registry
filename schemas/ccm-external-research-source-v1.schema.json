@@ -1,0 +1,777 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ccm_external_research_source v1",
+  "description": "Source-bound observations; shape validation does not establish numerical correctness, ground selection, or convergence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "semantics",
+    "kind",
+    "scope",
+    "source_dependencies",
+    "request",
+    "data"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "semantics": {
+      "const": "ccm-retained-research-observations-v1"
+    },
+    "kind": {
+      "const": "ccm_external_research_source"
+    },
+    "scope": {
+      "const": "finite_point_inputs; no_source_error_enclosure; no_ground_selection_or_convergence_certificate"
+    },
+    "source_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "content_digest",
+          "required_quality"
+        ],
+        "properties": {
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "logical_key",
+              "parameters_digest"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "logical_key": {
+                "type": "string"
+              },
+              "parameters_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "content_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "required_quality": {
+            "enum": [
+              "validated",
+              "cross_checked",
+              "certified",
+              "published",
+              "quarantined",
+              "staged",
+              "deprecated"
+            ]
+          }
+        }
+      }
+    },
+    "request": {
+      "type": "object"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "source_eigenpair",
+        "lambda_squared",
+        "n_modes",
+        "precision_bits",
+        "convention_id",
+        "definition_digest",
+        "approximation_scope",
+        "target",
+        "reference_jets",
+        "components",
+        "components_are_complete",
+        "perturbations",
+        "deficit",
+        "deficit_kind",
+        "atoms",
+        "atom_coordinate",
+        "atom_coverage",
+        "tail_checkpoints",
+        "cluster",
+        "previous_cluster",
+        "cluster_boundary_eigenvalues",
+        "energy_allowance"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "source_eigenpair": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "lambda_squared": {
+          "type": "string",
+          "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+        },
+        "n_modes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "precision_bits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "convention_id": {
+          "type": "string"
+        },
+        "definition_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "approximation_scope": {
+          "type": "string"
+        },
+        "target": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "definition_digest",
+                "evaluation_policy",
+                "approximation_scope",
+                "intervals",
+                "values",
+                "basis_values",
+                "fixed_second_component",
+                "raw_normalizer",
+                "trial_coefficients"
+              ],
+              "properties": {
+                "definition_digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "evaluation_policy": {
+                  "type": "string"
+                },
+                "approximation_scope": {
+                  "type": "string"
+                },
+                "intervals": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "values": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  }
+                },
+                "basis_values": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    }
+                  }
+                },
+                "fixed_second_component": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "raw_normalizer": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                "trial_coefficients": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reference_jets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ordinal",
+              "t",
+              "reference_window",
+              "reference_full",
+              "exterior_tail",
+              "endpoint_tail_part",
+              "fitted_interior_parts",
+              "error_normalization",
+              "source_value_error",
+              "tail_value_error",
+              "source_derivative_error",
+              "root_separation_radius"
+            ],
+            "properties": {
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "t": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "reference_window": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "derivative"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  "derivative": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  }
+                }
+              },
+              "reference_full": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "derivative"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  "derivative": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  }
+                }
+              },
+              "exterior_tail": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "value",
+                  "derivative"
+                ],
+                "properties": {
+                  "value": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  "derivative": {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  }
+                }
+              },
+              "endpoint_tail_part": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "value",
+                      "derivative"
+                    ],
+                    "properties": {
+                      "value": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      },
+                      "derivative": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "fitted_interior_parts": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "value",
+                    "derivative"
+                  ],
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "derivative": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    }
+                  }
+                }
+              },
+              "error_normalization": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "unit_l2_dx"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source_value_error": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tail_value_error": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source_derivative_error": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "root_separation_radius": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "source_digest",
+              "diagonal",
+              "dense",
+              "rank_one"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "diagonal": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "dense": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "rank_one": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "weight",
+                    "vector"
+                  ],
+                  "properties": {
+                    "weight": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "vector": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components_are_complete": {
+          "type": "boolean"
+        },
+        "perturbations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "label",
+              "source_digest",
+              "diagonal",
+              "dense",
+              "rank_one"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "diagonal": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "dense": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "rank_one": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "weight",
+                    "vector"
+                  ],
+                  "properties": {
+                    "weight": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "vector": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deficit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deficit_kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "exact_source",
+                "fuchs_approximation",
+                "other_approximation"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "atoms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ordinal",
+              "coordinate",
+              "weight",
+              "family",
+              "partition"
+            ],
+            "properties": {
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "coordinate": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "weight": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "family": {
+                "enum": [
+                  "zero",
+                  "lattice"
+                ]
+              },
+              "partition": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "atom_coordinate": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "atom_coverage": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tail_checkpoints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+          }
+        },
+        "cluster": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_digest",
+              "n_modes",
+              "precision_bits",
+              "eigenvalue",
+              "coefficients",
+              "assembly_policy"
+            ],
+            "properties": {
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "n_modes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "precision_bits": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "eigenvalue": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "coefficients": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "assembly_policy": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "previous_cluster": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source_digest",
+              "n_modes",
+              "precision_bits",
+              "eigenvalue",
+              "coefficients",
+              "assembly_policy"
+            ],
+            "properties": {
+              "source_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "n_modes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "precision_bits": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "eigenvalue": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "coefficients": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              },
+              "assembly_policy": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cluster_boundary_eigenvalues": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "energy_allowance": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "upper_trial_energy",
+                "low_block_lower_bound",
+                "high_block_lower_bound",
+                "cross_block_norm_bound",
+                "hypothesis_record_digest",
+                "hypotheses"
+              ],
+              "properties": {
+                "upper_trial_energy": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                "low_block_lower_bound": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                "high_block_lower_bound": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                "cross_block_norm_bound": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                "hypothesis_record_digest": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "hypotheses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
