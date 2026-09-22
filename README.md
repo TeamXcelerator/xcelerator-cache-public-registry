@@ -80,3 +80,10 @@ operator-cluster coupling, parent-derived finite sections, supplied tail-model
 solves and observable budgets where admitted by this catalog. The external input
 schema supports compact actions and explicit model/uncertainty provenance.
 Historical scientific payloads and indexes remain unchanged.
+
+
+The v0.15.1 completion formats include preflight coverage, independent consistency,
+configuration comparisons, signed band reconstruction and finite transform
+enclosures. Both registry lanes share payload shapes; family metadata continues
+to define publication eligibility. No research payloads are changed by this
+registration update.
