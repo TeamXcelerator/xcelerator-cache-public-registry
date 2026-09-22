@@ -404,6 +404,17 @@
                     "type": "null"
                   }
                 ]
+              },
+              "matched_root_ordinal": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             }
           }
