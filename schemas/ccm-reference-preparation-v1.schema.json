@@ -805,6 +805,196 @@
               "items": {
                 "type": "string"
               }
+            },
+            "atom_analysis": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "maximum_atoms",
+                    "maximum_input_bytes"
+                  ],
+                  "properties": {
+                    "maximum_atoms": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "maximum_input_bytes": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "weighted_chunks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "relative_path",
+                          "sha256",
+                          "bytes",
+                          "rows"
+                        ],
+                        "properties": {
+                          "relative_path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "bytes": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "rows": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "band_chunks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "relative_path",
+                          "sha256",
+                          "bytes",
+                          "rows"
+                        ],
+                        "properties": {
+                          "relative_path": {
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "bytes": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "rows": {
+                            "type": "integer",
+                            "minimum": 1
+                          }
+                        }
+                      }
+                    },
+                    "evaluations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "ordinal",
+                          "coordinate",
+                          "label"
+                        ],
+                        "properties": {
+                          "ordinal": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "coordinate": {
+                            "type": "string",
+                            "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "exclude": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "required": [
+                                "family",
+                                "partition",
+                                "ordinal"
+                              ],
+                              "properties": {
+                                "family": {
+                                  "type": "string"
+                                },
+                                "partition": {
+                                  "type": "string"
+                                },
+                                "ordinal": {
+                                  "type": "integer",
+                                  "minimum": 1
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "cutoffs": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      },
+                      "maxItems": 32
+                    },
+                    "tail_recipe": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "basis_polynomials",
+                            "tail_correction",
+                            "hypotheses"
+                          ],
+                          "properties": {
+                            "basis_polynomials": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                                }
+                              }
+                            },
+                            "tail_correction": {
+                              "anyOf": [
+                                {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                                  }
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "hypotheses": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           }
         },
