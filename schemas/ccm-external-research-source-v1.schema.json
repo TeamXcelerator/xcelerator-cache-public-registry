@@ -770,6 +770,282 @@
               "type": "null"
             }
           ]
+        },
+        "run_once": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "component_actions",
+            "derivative_actions",
+            "log_cutoff_velocity",
+            "reference_vectors",
+            "comparison",
+            "tail_form",
+            "uncertainty",
+            "producer_notes"
+          ],
+          "properties": {
+            "component_actions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "source_digest",
+                  "action",
+                  "convention"
+                ],
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "source_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "action": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    }
+                  },
+                  "convention": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "derivative_actions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label",
+                  "source_digest",
+                  "action",
+                  "convention"
+                ],
+                "properties": {
+                  "label": {
+                    "type": "string"
+                  },
+                  "source_digest": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "action": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    }
+                  },
+                  "convention": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "log_cutoff_velocity": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reference_vectors": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                }
+              }
+            },
+            "comparison": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "source_digest",
+                    "matrix_digest",
+                    "lambda_squared",
+                    "n_modes",
+                    "precision_bits",
+                    "coefficients",
+                    "matrix",
+                    "eigenvalue",
+                    "assembly_policy"
+                  ],
+                  "properties": {
+                    "source_digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "matrix_digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "lambda_squared": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "n_modes": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "precision_bits": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "coefficients": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    "matrix": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    "eigenvalue": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "assembly_policy": {
+                      "type": "string"
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "tail_form": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "definition_digest",
+                    "dimension",
+                    "finite_zero_form",
+                    "tail_correction",
+                    "lattice_gram",
+                    "tail_operator_error",
+                    "coverage",
+                    "hypotheses"
+                  ],
+                  "properties": {
+                    "definition_digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "dimension": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "finite_zero_form": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    "tail_correction": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    "lattice_gram": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                      }
+                    },
+                    "tail_operator_error": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "coverage": {
+                      "type": "string"
+                    },
+                    "hypotheses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "uncertainty": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "unit_state_l2_error",
+                    "source_certificate_digest",
+                    "hypotheses"
+                  ],
+                  "properties": {
+                    "unit_state_l2_error": {
+                      "type": "string",
+                      "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                    },
+                    "source_certificate_digest": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "hypotheses": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "producer_notes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

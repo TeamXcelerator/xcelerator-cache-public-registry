@@ -74,3 +74,9 @@ for mathematical conventions, missing-input behavior and assurance limits.
 The v0.15.1 extension adds schemas for external numerical research sources and
 nine derived diagnostic groups. Family descriptors retain their appropriate
 admission rules. Existing objects, receipts, and target identities are unchanged.
+
+Ultra v5 additionally retains complex transform samples, signed root transport,
+operator-cluster coupling, parent-derived finite sections, supplied tail-model
+solves and observable budgets where admitted by this catalog. The external input
+schema supports compact actions and explicit model/uncertainty provenance.
+Historical scientific payloads and indexes remain unchanged.
