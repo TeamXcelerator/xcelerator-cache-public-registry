@@ -77,7 +77,62 @@
       }
     },
     "request": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "options",
+        "reference",
+        "ordered_basis",
+        "metric"
+      ],
+      "properties": {
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "working_precision_bits",
+            "normalization",
+            "fixed_second_component"
+          ],
+          "properties": {
+            "working_precision_bits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "normalization": {
+              "enum": [
+                "unit_l2_dx",
+                "center_one"
+              ]
+            },
+            "fixed_second_component": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "reference": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ordered_basis": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "metric": {
+          "type": "string"
+        }
+      }
     },
     "data": {
       "type": "object",

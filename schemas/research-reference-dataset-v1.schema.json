@@ -77,7 +77,70 @@
       }
     },
     "request": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "role",
+        "attribution",
+        "coordinate",
+        "precision_bits",
+        "points"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "role": {
+          "enum": [
+            "known_zeta_ordinates",
+            "evaluation_points",
+            "retained_ccm_roots"
+          ]
+        },
+        "attribution": {
+          "type": "string"
+        },
+        "coordinate": {
+          "const": "mellin_t"
+        },
+        "precision_bits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ordinal",
+              "value",
+              "source_status"
+            ],
+            "properties": {
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "value": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "source_status": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     },
     "data": {
       "type": "object",

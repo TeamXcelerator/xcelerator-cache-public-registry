@@ -77,7 +77,44 @@
       }
     },
     "request": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "options",
+        "ordered_sources"
+      ],
+      "properties": {
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "working_precision_bits",
+            "relative_tolerance",
+            "consecutive_steps"
+          ],
+          "properties": {
+            "working_precision_bits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "relative_tolerance": {
+              "type": "string",
+              "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+            },
+            "consecutive_steps": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        },
+        "ordered_sources": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
     },
     "data": {
       "type": "object",

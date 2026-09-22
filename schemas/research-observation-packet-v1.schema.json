@@ -77,7 +77,49 @@
       }
     },
     "request": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "original_utf8",
+        "attribution",
+        "definition",
+        "hypotheses",
+        "borrowed_inputs",
+        "limitations"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "original_utf8": {
+          "type": "string"
+        },
+        "attribution": {
+          "type": "string"
+        },
+        "definition": {
+          "type": "string"
+        },
+        "hypotheses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "borrowed_inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
     "data": {
       "type": "object",

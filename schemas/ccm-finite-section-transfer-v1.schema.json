@@ -77,7 +77,112 @@
       }
     },
     "request": {
-      "type": "object"
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantics",
+        "diagnostic",
+        "expected_rows",
+        "options",
+        "external_input_digest",
+        "state_selection_policy",
+        "state_manifest_tags"
+      ],
+      "properties": {
+        "semantics": {
+          "enum": [
+            "extended-retained-diagnostics-v2",
+            "extended-retained-diagnostics-v3",
+            "extended-retained-diagnostics-v4"
+          ]
+        },
+        "diagnostic": {
+          "const": "finite_section_transfer"
+        },
+        "expected_rows": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "working_precision_bits",
+            "maximum_rows",
+            "maximum_directional_rows",
+            "maximum_estimated_output_bytes",
+            "exponential_rates",
+            "relative_tolerance"
+          ],
+          "properties": {
+            "working_precision_bits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_rows": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_directional_rows": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_estimated_output_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "exponential_rates": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+              }
+            },
+            "relative_tolerance": {
+              "type": "string",
+              "pattern": "^-?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$"
+            },
+            "maximum_working_bytes": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "external_input_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state_selection_policy": {
+          "type": "string"
+        },
+        "state_manifest_tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
     },
     "data": {
       "type": "object",
@@ -197,10 +302,58 @@
                   "type": "string"
                 }
               }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "outcome": {
+                      "enum": [
+                        "point_measurement",
+                        "certified_finite_enclosure"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "values": {
+                      "required": [
+                        "n_modes",
+                        "retained_mass",
+                        "omitted_mass",
+                        "truncated_energy"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "enum": [
+                  "point_measurement",
+                  "certified_finite_enclosure",
+                  "conditional_bound_expression"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "values": {
+                "required": []
+              }
             }
           }
         }
-      }
+      ]
     }
   }
 }
