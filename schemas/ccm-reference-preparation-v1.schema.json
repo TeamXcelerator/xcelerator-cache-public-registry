@@ -367,6 +367,16 @@
               "items": {
                 "type": "string"
               }
+            },
+            "polynomial_coordinate": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           }
         },
