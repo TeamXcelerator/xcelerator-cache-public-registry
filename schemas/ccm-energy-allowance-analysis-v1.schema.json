@@ -181,6 +181,9 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "allowance_interpretation": {
+          "const": "trial-energy-scale-v1"
         }
       }
     },
@@ -335,5 +338,43 @@
         }
       ]
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "required": [
+              "allowance_interpretation"
+            ]
+          },
+          "data": {
+            "properties": {
+              "outcome": {
+                "const": "conditional_bound_expression"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "values": {
+                "required": [
+                  "conditional_energy_allowance",
+                  "conditional_vector_allowance",
+                  "trial_energy_magnitude"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

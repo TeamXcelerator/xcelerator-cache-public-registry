@@ -183,7 +183,10 @@
           }
         },
         "enclosure_algorithm": {
-          "const": "centered-taylor-48-integral-remainder-v1"
+          "enum": [
+            "centered-taylor-48-integral-remainder-v1",
+            "centered-taylor-48-integral-remainder-v2"
+          ]
         }
       }
     },
