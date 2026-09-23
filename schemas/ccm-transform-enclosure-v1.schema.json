@@ -181,6 +181,9 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "enclosure_algorithm": {
+          "const": "centered-taylor-48-integral-remainder-v1"
         }
       }
     },
