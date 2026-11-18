@@ -1,0 +1,15 @@
+{
+  "artifact_kinds": [
+    "ccm_discretization_distance",
+    "ccm_eigenfunction_profile"
+  ],
+  "current_writable_shard": "TeamXcelerator/xcelerator-cache-public-ccm-distance-0001",
+  "description": "Target-independent CCM eigenfunction profiles and inter-discretization distances.",
+  "display_name": "CCM distance",
+  "family": "ccm-distance",
+  "schema_version": 1,
+  "shards": [
+    "shards/xcelerator-cache-public-ccm-distance-0001.json"
+  ],
+  "visibility": "public"
+}

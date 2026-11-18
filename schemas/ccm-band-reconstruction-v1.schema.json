@@ -1,0 +1,783 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ccm_band_reconstruction v1",
+  "description": "Source-bound observations; shape validation does not establish numerical correctness, ground selection, or convergence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "semantics",
+    "kind",
+    "scope",
+    "source_dependencies",
+    "request",
+    "data"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "semantics": {
+      "enum": [
+        "ccm-retained-research-observations-v1",
+        "ccm-retained-research-observations-v2",
+        "ccm-retained-research-observations-v3",
+        "ccm-retained-research-observations-v4",
+        "ccm-retained-research-observations-v5",
+        "ccm-retained-research-observations-v6",
+        "ccm-retained-research-observations-v7",
+        "ccm-retained-research-observations-v8",
+        "ccm-retained-research-observations-v9",
+        "ccm-retained-research-observations-v10",
+        "ccm-retained-research-observations-v11",
+        "ccm-retained-research-observations-v12",
+        "ccm-retained-research-observations-v13",
+        "ccm-retained-research-observations-v14",
+        "ccm-retained-research-observations-v15",
+        "ccm-retained-research-observations-v16",
+        "ccm-retained-research-observations-v17",
+        "ccm-retained-research-observations-v18",
+        "ccm-retained-research-observations-v19",
+        "ccm-retained-research-observations-v20",
+        "ccm-retained-research-observations-v21",
+        "ccm-retained-research-observations-v22"
+      ]
+    },
+    "kind": {
+      "const": "ccm_band_reconstruction"
+    },
+    "scope": {
+      "const": "finite_point_inputs; no_source_error_enclosure; no_ground_selection_or_convergence_certificate"
+    },
+    "source_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "content_digest",
+          "required_quality"
+        ],
+        "properties": {
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "logical_key",
+              "parameters_digest"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "logical_key": {
+                "type": "string"
+              },
+              "parameters_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+              }
+            }
+          },
+          "content_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+          },
+          "required_quality": {
+            "enum": [
+              "validated",
+              "cross_checked",
+              "certified",
+              "published",
+              "quarantined",
+              "staged",
+              "deprecated"
+            ]
+          }
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantics",
+        "diagnostic",
+        "expected_rows",
+        "options",
+        "external_input_digest",
+        "state_selection_policy",
+        "state_manifest_tags"
+      ],
+      "properties": {
+        "semantics": {
+          "enum": [
+            "extended-retained-diagnostics-v2",
+            "extended-retained-diagnostics-v3",
+            "extended-retained-diagnostics-v4"
+          ]
+        },
+        "diagnostic": {
+          "const": "band_reconstruction"
+        },
+        "expected_rows": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "working_precision_bits",
+            "maximum_rows",
+            "maximum_directional_rows",
+            "maximum_estimated_output_bytes",
+            "exponential_rates",
+            "relative_tolerance"
+          ],
+          "properties": {
+            "working_precision_bits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_rows": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_directional_rows": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "maximum_estimated_output_bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "exponential_rates": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+              }
+            },
+            "relative_tolerance": {
+              "type": "string",
+              "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+            },
+            "maximum_working_bytes": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "external_input_digest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state_selection_policy": {
+          "type": "string"
+        },
+        "state_manifest_tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "arb_available": {
+          "type": "boolean"
+        },
+        "basis_disk_budget_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "checkpoint_block_budget_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resource_admission": {
+          "const": "budget_limited_results_not_retained_v2"
+        },
+        "duplicate_coordinate_policy": {
+          "const": "all_ambiguous_members_withheld_v2"
+        },
+        "ladder_positivity_policy": {
+          "const": "all_required_recurrence_steps_including_failed_v2"
+        },
+        "exact_contraction_admission": {
+          "const": "all_block_workspace_bound_v1"
+        },
+        "source_unit_arithmetic": {
+          "enum": [
+            "binary_scaled_hypot_checked_v1",
+            "binary_scaled_hypot_checked_range_v2"
+          ]
+        },
+        "signed_band_arithmetic": {
+          "const": "declared_points_normalized_recurrence_exact_contractions_v1"
+        },
+        "maximum_signed_band_exact_bits": {
+          "const": 8000000
+        },
+        "signed_band_inverse_arithmetic": {
+          "const": "relative_zero_guard_scaled_directed_sums_v1"
+        },
+        "maximum_signed_band_inverse_guard_bits": {
+          "const": 4096
+        },
+        "polynomial_root_window": {
+          "const": "common_binary_scale_exact_rational_cauchy_v2"
+        },
+        "polynomial_band_arithmetic": {
+          "const": "stored_polynomial_exact_newton_inverse_moments_v1"
+        },
+        "polynomial_root_output": {
+          "const": "outward_root_bounds_and_safe_midpoints_v1"
+        },
+        "maximum_polynomial_band_exact_bits": {
+          "const": 8000000
+        },
+        "tail_model_arithmetic": {
+          "const": "declared_points_exact_dyadic_recipe_forms_v2"
+        },
+        "maximum_tail_form_exact_bits": {
+          "const": 8000000
+        },
+        "tail_model_checkpoint_arithmetic": {
+          "const": "finite-tail-model-original-matrix-dense-source-recovery-v8"
+        },
+        "tail_model_householder_arithmetic": {
+          "const": "householder-scaled-opposite-sign-v1"
+        },
+        "tail_model_qr_arithmetic": {
+          "const": "tridiag-qr-working-unit-deflation-exponent-safe-hypot-v3"
+        },
+        "tail_model_vector_recovery_arithmetic": {
+          "const": "dense-eigenvector-requested-source-rounding-exact-count-scaling-directed-index-gap-angle-v3"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diagnostic",
+        "outcome",
+        "reason",
+        "lambda_squared",
+        "n_modes",
+        "source_precision_bits",
+        "working_precision_bits",
+        "convention",
+        "assurance",
+        "values",
+        "rows"
+      ],
+      "properties": {
+        "diagnostic": {
+          "const": "band_reconstruction"
+        },
+        "outcome": {
+          "enum": [
+            "point_measurement",
+            "partial_unresolved",
+            "unresolved",
+            "missing_input",
+            "rank_or_precision_unresolved",
+            "conditional_bound_expression",
+            "sufficient_bound_unavailable"
+          ]
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lambda_squared": {
+          "type": "string",
+          "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+        },
+        "n_modes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_precision_bits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "working_precision_bits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "convention": {
+          "type": "string"
+        },
+        "assurance": {
+          "const": "point_diagnostics_only; external_inputs_and_allowances_not_certified; no_RH_or_ground_selection_premise"
+        },
+        "values": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ordinal",
+              "label",
+              "outcome",
+              "values",
+              "notes"
+            ],
+            "properties": {
+              "ordinal": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "label": {
+                "type": "string"
+              },
+              "outcome": {
+                "enum": [
+                  "point_measurement",
+                  "missing_input",
+                  "budget_limited",
+                  "carrier_or_unresolved",
+                  "unresolved_denominator",
+                  "cancellation_limited",
+                  "unresolved_derivative",
+                  "channels_resolved_budget_unassessed",
+                  "conditional_budget_met",
+                  "conditional_budget_not_met",
+                  "conditional_budget_unresolved"
+                ]
+              },
+              "values": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "string",
+                  "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+                }
+              },
+              "notes": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "label": {
+                      "const": "signed_functional_stieltjes_recurrence"
+                    },
+                    "outcome": {
+                      "enum": [
+                        "point_measurement",
+                        "certified_finite_enclosure"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "values": {
+                      "required": [
+                        "jacobi_diagonal",
+                        "next_signed_norm_squared",
+                        "reorthogonalization_correction"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "label": {
+                      "const": "band_cutoff"
+                    },
+                    "outcome": {
+                      "enum": [
+                        "point_measurement",
+                        "certified_finite_enclosure"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "values": {
+                      "required": [
+                        "zero_atom_cutoff",
+                        "first_model_band_root",
+                        "last_model_band_root"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "outcome": {
+                "enum": [
+                  "point_measurement",
+                  "certified_finite_enclosure",
+                  "conditional_bound_expression"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "values": {
+                "required": [
+                  "signed_mass"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "properties": {
+              "semantics": {
+                "enum": [
+                  "extended-retained-diagnostics-v3",
+                  "extended-retained-diagnostics-v4"
+                ]
+              }
+            }
+          },
+          "data": {
+            "properties": {
+              "outcome": {
+                "const": "point_measurement"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "properties": {
+              "values": {
+                "required": [
+                  "band_inverse_moment_one",
+                  "band_inverse_moment_two",
+                  "band_inverse_moment_three",
+                  "band_inverse_moment_root_count"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v4",
+              "ccm-retained-research-observations-v5",
+              "ccm-retained-research-observations-v6",
+              "ccm-retained-research-observations-v7",
+              "ccm-retained-research-observations-v8",
+              "ccm-retained-research-observations-v9",
+              "ccm-retained-research-observations-v10",
+              "ccm-retained-research-observations-v11",
+              "ccm-retained-research-observations-v12",
+              "ccm-retained-research-observations-v13",
+              "ccm-retained-research-observations-v14",
+              "ccm-retained-research-observations-v15",
+              "ccm-retained-research-observations-v16",
+              "ccm-retained-research-observations-v17",
+              "ccm-retained-research-observations-v18",
+              "ccm-retained-research-observations-v19",
+              "ccm-retained-research-observations-v20",
+              "ccm-retained-research-observations-v21",
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "source_unit_arithmetic"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "source_unit_arithmetic"
+            ],
+            "properties": {
+              "source_unit_arithmetic": {
+                "const": "binary_scaled_hypot_checked_range_v2"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "request": {
+            "properties": {
+              "source_unit_arithmetic": {
+                "enum": [
+                  "binary_scaled_hypot_checked_v1"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v20",
+              "ccm-retained-research-observations-v21",
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "signed_band_arithmetic",
+              "maximum_signed_band_exact_bits",
+              "signed_band_inverse_arithmetic",
+              "maximum_signed_band_inverse_guard_bits"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "polynomial_root_window"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v21",
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "polynomial_band_arithmetic",
+              "polynomial_root_output",
+              "maximum_polynomial_band_exact_bits"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v21",
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "properties": {
+              "rows": {
+                "items": {
+                  "allOf": [
+                    {
+                      "if": {
+                        "properties": {
+                          "label": {
+                            "const": "arithmetic_model_polynomial_root"
+                          }
+                        }
+                      },
+                      "then": {
+                        "properties": {
+                          "values": {
+                            "required": [
+                              "model_band_root",
+                              "rounded_polynomial_root_lower",
+                              "rounded_polynomial_root_upper"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "semantics": {
+            "enum": [
+              "ccm-retained-research-observations-v18",
+              "ccm-retained-research-observations-v19",
+              "ccm-retained-research-observations-v20",
+              "ccm-retained-research-observations-v21",
+              "ccm-retained-research-observations-v22"
+            ]
+          }
+        },
+        "required": [
+          "semantics"
+        ]
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "tail_model_arithmetic",
+              "maximum_tail_form_exact_bits"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "request": {
+            "required": [
+              "tail_model_checkpoint_arithmetic"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "request": {
+            "required": [
+              "tail_model_checkpoint_arithmetic",
+              "tail_model_householder_arithmetic",
+              "tail_model_qr_arithmetic",
+              "tail_model_vector_recovery_arithmetic"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ccm_reference_source v1",
+  "description": "Source-bound observations; shape validation does not establish numerical correctness, ground selection, or convergence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "semantics",
+    "kind",
+    "scope",
+    "source_dependencies",
+    "request",
+    "data"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "semantics": {
+      "enum": [
+        "ccm-retained-research-observations-v1",
+        "ccm-retained-research-observations-v2",
+        "ccm-retained-research-observations-v3",
+        "ccm-retained-research-observations-v4",
+        "ccm-retained-research-observations-v5",
+        "ccm-retained-research-observations-v6",
+        "ccm-retained-research-observations-v7",
+        "ccm-retained-research-observations-v8",
+        "ccm-retained-research-observations-v9",
+        "ccm-retained-research-observations-v10",
+        "ccm-retained-research-observations-v11",
+        "ccm-retained-research-observations-v12",
+        "ccm-retained-research-observations-v13",
+        "ccm-retained-research-observations-v14",
+        "ccm-retained-research-observations-v15",
+        "ccm-retained-research-observations-v16",
+        "ccm-retained-research-observations-v17",
+        "ccm-retained-research-observations-v18",
+        "ccm-retained-research-observations-v19",
+        "ccm-retained-research-observations-v20",
+        "ccm-retained-research-observations-v21",
+        "ccm-retained-research-observations-v22"
+      ]
+    },
+    "kind": {
+      "const": "ccm_reference_source"
+    },
+    "scope": {
+      "const": "finite_point_inputs; no_source_error_enclosure; no_ground_selection_or_convergence_certificate"
+    },
+    "source_dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "key",
+          "content_digest",
+          "required_quality"
+        ],
+        "properties": {
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "logical_key",
+              "parameters_digest"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "logical_key": {
+                "type": "string"
+              },
+              "parameters_digest": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+              }
+            }
+          },
+          "content_digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+          },
+          "required_quality": {
+            "enum": [
+              "validated",
+              "cross_checked",
+              "certified",
+              "published",
+              "quarantined",
+              "staged",
+              "deprecated"
+            ]
+          }
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "definition",
+        "lambda_squared",
+        "precision_bits",
+        "coefficients",
+        "approximation_scope"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": 1
+        },
+        "definition": {
+          "type": "string"
+        },
+        "lambda_squared": {
+          "type": "string",
+          "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+        },
+        "precision_bits": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coefficients": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+          }
+        },
+        "approximation_scope": {
+          "type": "string"
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spec",
+        "definition_digest",
+        "basis",
+        "certification"
+      ],
+      "properties": {
+        "spec": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema_version",
+            "definition",
+            "lambda_squared",
+            "precision_bits",
+            "coefficients",
+            "approximation_scope"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": 1
+            },
+            "definition": {
+              "type": "string"
+            },
+            "lambda_squared": {
+              "type": "string",
+              "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+            },
+            "precision_bits": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "coefficients": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?(?![\\s\\S])"
+              }
+            },
+            "approximation_scope": {
+              "type": "string"
+            }
+          }
+        },
+        "definition_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "certification": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
